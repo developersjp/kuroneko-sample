@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  bot:
+    build: .
+    env_file: ./.env
+    restart: on-failure
+    environment:
+      - NODE_ENV="dev"
+    tty: true
+    stdin_open: true
+    ports:
+        - 9000:9000
+    volumes:
+      - ./package.json:/app/package.json
+      - ./test:/app/test
+      - ./index.js:/app/index.js
+      - ./src:/app/src
